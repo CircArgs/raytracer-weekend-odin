@@ -1,19 +1,13 @@
 package test
 
+import "src/ray"
+import "src/vec"
 import "core:fmt"
-import "core:runtime"
-a::proc(){
-  fmt.print(context.name_a)
-}
-
-b::proc(){
-  fmt.print(context.name_b)
-}
-my_context :: struct{
-  using ctx: runtime.Context,
-  name_a: string ,
-}
-main :: proc(){
-  context=my_context{context, "a"}
-  a()
+main::proc(){
+  using ray
+  using vec
+r:=Ray{dir=Vector3{1,2,3}}
+ra:=ray_at(&r, 5)
+ra.dir=Vector3{4,5,6}
+  fmt.print(r, ra)
 }
