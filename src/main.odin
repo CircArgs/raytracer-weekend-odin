@@ -4,10 +4,22 @@ import "core:fmt"
 import "vec"
 import "color"
 
+// image details
+ASPECT_RATIO :: 16./9.
+IMAGE_WIDTH :: 400
+IMAGE_HEIGHT :: ASPECT_RATIO*IMAGE_WIDTH
 
-IMAGE_WIDTH :: 256
-IMAGE_HEIGHT :: 256
+// camera details
+VIEWPORT_HEIGHT :: 2.
+VIEWPORT_WIDTH :: ASPECT_RATIO * VIEWPORT_HEIGHT
+FOCAL_LENGTH :: 1.
 
+ORIGIN::vec.Point3{}
+HORIZONTAL::vec.Vector3{VIEWPORT_WIDTH}
+VERTICAL::vec.Vector3{0, VIEWPORT_HEIGHT}
+LOWER_LEFT_CORNER::ORIGIN-HORIZONTAL/2.-VERTICAL/2.-vec.Vector3{z=FOCAL_LENGTH}
+
+// base for initial gradient images
 BASE :: vec.Vector3{(IMAGE_WIDTH - 1),  (IMAGE_HEIGHT - 1),  4}
 
 main :: proc() {
